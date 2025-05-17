@@ -29,7 +29,7 @@ export default function Home() {
   const { copyright } = useLoaderData<typeof loader>();
 
   return (
-    <main className="h-screen w-screen text-white bg-slate-950 flex flex-col gap-2 justify-center items-center">
+    <main className="h-screen font-medium w-screen text-white bg-slate-950 flex flex-col gap-2 justify-center items-center">
       <Header />
       <NavBar />
       <Footer copyright={copyright} />
