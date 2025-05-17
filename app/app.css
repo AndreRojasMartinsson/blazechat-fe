@@ -1,15 +1,278 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --font-sans: "Ancizar Sans", ui-sans-serif, system-ui, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
-html,
+@theme inline {
+  --color-*: initial;
+
+  --color-background: var(--mauve-1);
+  --color-foreground: var(--mauve-12);
+
+  --color-mauve-1: var(--mauve-1);
+  --color-mauve-2: var(--mauve-2);
+  --color-mauve-3: var(--mauve-3);
+  --color-mauve-4: var(--mauve-4);
+  --color-mauve-5: var(--mauve-5);
+  --color-mauve-6: var(--mauve-6);
+  --color-mauve-7: var(--mauve-7);
+  --color-mauve-8: var(--mauve-8);
+  --color-mauve-9: var(--mauve-9);
+  --color-mauve-10: var(--mauve-10);
+  --color-mauve-11: var(--mauve-11);
+  --color-mauve-12: var(--mauve-12);
+
+  --color-brand-1: var(--brand-1);
+  --color-brand-2: var(--brand-2);
+  --color-brand-3: var(--brand-3);
+  --color-brand-4: var(--brand-4);
+  --color-brand-5: var(--brand-5);
+  --color-brand-6: var(--brand-6);
+  --color-brand-7: var(--brand-7);
+  --color-brand-8: var(--brand-8);
+  --color-brand-9: var(--brand-9);
+  --color-brand-10: var(--brand-10);
+  --color-brand-11: var(--brand-11);
+  --color-brand-12: var(--brand-12);
+
+  --color-amber-1: var(--amber-1);
+  --color-amber-2: var(--amber-2);
+  --color-amber-3: var(--amber-3);
+  --color-amber-4: var(--amber-4);
+  --color-amber-5: var(--amber-5);
+  --color-amber-6: var(--amber-6);
+  --color-amber-7: var(--amber-7);
+  --color-amber-8: var(--amber-8);
+  --color-amber-9: var(--amber-9);
+  --color-amber-10: var(--amber-10);
+  --color-amber-11: var(--amber-11);
+  --color-amber-12: var(--amber-12);
+
+  --color-red-1: var(--red-1);
+  --color-red-2: var(--red-2);
+  --color-red-3: var(--red-3);
+  --color-red-4: var(--red-4);
+  --color-red-5: var(--red-5);
+  --color-red-6: var(--red-6);
+  --color-red-7: var(--red-7);
+  --color-red-8: var(--red-8);
+  --color-red-9: var(--red-9);
+  --color-red-10: var(--red-10);
+  --color-red-11: var(--red-11);
+  --color-red-12: var(--red-12);
+
+  --color-lime-1: var(--lime-1);
+  --color-lime-2: var(--lime-2);
+  --color-lime-3: var(--lime-3);
+  --color-lime-4: var(--lime-4);
+  --color-lime-5: var(--lime-5);
+  --color-lime-6: var(--lime-6);
+  --color-lime-7: var(--lime-7);
+  --color-lime-8: var(--lime-8);
+  --color-lime-9: var(--lime-9);
+  --color-lime-10: var(--lime-10);
+  --color-lime-11: var(--lime-11);
+  --color-lime-12: var(--lime-12);
+
+  --color-sky-1: var(--sky-1);
+  --color-sky-2: var(--sky-2);
+  --color-sky-3: var(--sky-3);
+  --color-sky-4: var(--sky-4);
+  --color-sky-5: var(--sky-5);
+  --color-sky-6: var(--sky-6);
+  --color-sky-7: var(--sky-7);
+  --color-sky-8: var(--sky-8);
+  --color-sky-9: var(--sky-9);
+  --color-sky-10: var(--sky-10);
+  --color-sky-11: var(--sky-11);
+  --color-sky-12: var(--sky-12);
+}
+
+/* Light theme variables */
+:root {
+  --mauve-1: hsl(300 20% 99%);
+  --mauve-2: hsl(270 20% 98%);
+  --mauve-3: hsl(285 14% 95%);
+  --mauve-4: hsl(276 12% 92%);
+  --mauve-5: hsl(274 12% 89%);
+  --mauve-6: hsl(262 11% 86%);
+  --mauve-7: hsl(258 11% 82%);
+  --mauve-8: hsl(249 10% 75%);
+  --mauve-9: hsl(249 6% 57%);
+  --mauve-10: hsl(250 5% 53%);
+  --mauve-11: hsl(252 5% 41%);
+  --mauve-12: hsl(257 10% 14%);
+
+  --brand-1: hsl(270 50% 99%);
+  --brand-2: hsl(257 100% 99%);
+  --brand-3: hsl(257 88% 97%);
+  --brand-4: hsl(256 100% 95%);
+  --brand-5: hsl(253 100% 93%);
+  --brand-6: hsl(252 96% 89%);
+  --brand-7: hsl(252 76% 84%);
+  --brand-8: hsl(252 69% 76%);
+  --brand-9: hsl(252 56% 57%);
+  --brand-10: hsl(252 50% 54%);
+  --brand-11: hsl(252 43% 52%);
+  --brand-12: hsl(249 43% 26%);
+
+  --amber-1: hsl(40 60% 99%);
+  --amber-2: hsl(51 91% 95%);
+  --amber-3: hsl(52 100% 88%);
+  --amber-4: hsl(50 100% 81%);
+  --amber-5: hsl(50 94% 73%);
+  --amber-6: hsl(46 84% 70%);
+  --amber-7: hsl(42 75% 65%);
+  --amber-8: hsl(38 75% 55%);
+  --amber-9: hsl(42 100% 62%);
+  --amber-10: hsl(42 100% 55%);
+  --amber-11: hsl(35 100% 34%);
+  --amber-12: hsl(24 40% 22%);
+
+  --red-1: hsl(0 100% 99%);
+  --red-2: hsl(0 100% 98%);
+  --red-3: hsl(357 90% 96%);
+  --red-4: hsl(358 100% 93%);
+  --red-5: hsl(359 100% 90%);
+  --red-6: hsl(359 94% 87%);
+  --red-7: hsl(359 77% 81%);
+  --red-8: hsl(359 70% 74%);
+  --red-9: hsl(358 75% 59%);
+  --red-10: hsl(358 69% 55%);
+  --red-11: hsl(358 65% 49%);
+  --red-12: hsl(351 63% 24%);
+
+  --lime-1: hsl(80 43% 99%);
+  --lime-2: hsl(77 41% 97%);
+  --lime-3: hsl(75 64% 90%);
+  --lime-4: hsl(76 63% 84%);
+  --lime-5: hsl(78 58% 78%);
+  --lime-6: hsl(80 50% 71%);
+  --lime-7: hsl(82 43% 63%);
+  --lime-8: hsl(85 40% 52%);
+  --lime-9: hsl(81 80% 66%);
+  --lime-10: hsl(81 75% 60%);
+  --lime-11: hsl(85 45% 34%);
+  --lime-12: hsl(75 39% 18%);
+
+  --sky-1: hsl(190 100% 99%);
+  --sky-2: hsl(195 75% 97%);
+  --sky-3: hsl(195 88% 94%);
+  --sky-4: hsl(195 80% 90%);
+  --sky-5: hsl(195 73% 85%);
+  --sky-6: hsl(197 65% 80%);
+  --sky-7: hsl(197 61% 72%);
+  --sky-8: hsl(198 60% 61%);
+  --sky-9: hsl(193 98% 74%);
+  --sky-10: hsl(194 90% 71%);
+  --sky-11: hsl(196 100% 31%);
+  --sky-12: hsl(205 50% 23%);
+}
+
+/* Dark theme variables */
+.dark,
+:root[class~="dark"] {
+  --mauve-1: hsl(270 6% 7%);
+  --mauve-2: hsl(270 4% 10%);
+  --mauve-3: hsl(260 4% 14%);
+  --mauve-4: hsl(270 5% 17%);
+  --mauve-5: hsl(264 5% 20%);
+  --mauve-6: hsl(270 5% 24%);
+  --mauve-7: hsl(257 5% 29%);
+  --mauve-8: hsl(258 5% 39%);
+  --mauve-9: hsl(251 5% 45%);
+  --mauve-10: hsl(251 4% 50%);
+  --mauve-11: hsl(258 7% 72%);
+  --mauve-12: hsl(240 6% 94%);
+
+  --brand-1: hsl(249 27% 10%);
+  --brand-2: hsl(263 28% 11%);
+  --brand-3: hsl(257 37% 19%);
+  --brand-4: hsl(256 42% 25%);
+  --brand-5: hsl(254 39% 30%);
+  --brand-6: hsl(255 36% 34%);
+  --brand-7: hsl(254 33% 41%);
+  --brand-8: hsl(252 34% 51%);
+  --brand-9: hsl(252 56% 57%);
+  --brand-10: hsl(252 60% 63%);
+  --brand-11: hsl(253 100% 83%);
+  --brand-12: hsl(249 94% 93%);
+
+  --amber-1: hsl(36 29% 7%);
+  --amber-2: hsl(39 32% 9%);
+  --amber-3: hsl(36 71% 11%);
+  --amber-4: hsl(37 100% 12%);
+  --amber-5: hsl(37 100% 15%);
+  --amber-6: hsl(39 90% 19%);
+  --amber-7: hsl(37 64% 27%);
+  --amber-8: hsl(36 60% 35%);
+  --amber-9: hsl(42 100% 62%);
+  --amber-10: hsl(50 100% 52%);
+  --amber-11: hsl(46 100% 54%);
+  --amber-12: hsl(41 100% 85%);
+
+  --red-1: hsl(0 19% 8%);
+  --red-2: hsl(355 25% 10%);
+  --red-3: hsl(350 53% 15%);
+  --red-4: hsl(348 68% 19%);
+  --red-5: hsl(350 63% 23%);
+  --red-6: hsl(352 53% 29%);
+  --red-7: hsl(355 47% 37%);
+  --red-8: hsl(358 45% 49%);
+  --red-9: hsl(358 75% 59%);
+  --red-10: hsl(360 79% 65%);
+  --red-11: hsl(2 100% 79%);
+  --red-12: hsl(350 100% 91%);
+
+  --lime-1: hsl(77 23% 6%);
+  --lime-2: hsl(90 24% 8%);
+  --lime-3: hsl(93 28% 13%);
+  --lime-4: hsl(92 31% 16%);
+  --lime-5: hsl(91 32% 20%);
+  --lime-6: hsl(92 32% 24%);
+  --lime-7: hsl(91 33% 29%);
+  --lime-8: hsl(90 35% 34%);
+  --lime-9: hsl(81 80% 66%);
+  --lime-10: hsl(78 100% 72%);
+  --lime-11: hsl(80 70% 66%);
+  --lime-12: hsl(80 79% 85%);
+
+  --sky-1: hsl(217 41% 9%);
+  --sky-2: hsl(215 39% 11%);
+  --sky-3: hsl(211 58% 16%);
+  --sky-4: hsl(208 67% 20%);
+  --sky-5: hsl(206 66% 24%);
+  --sky-6: hsl(205 64% 29%);
+  --sky-7: hsl(203 65% 35%);
+  --sky-8: hsl(200 75% 39%);
+  --sky-9: hsl(193 98% 74%);
+  --sky-10: hsl(192 100% 83%);
+  --sky-11: hsl(200 80% 70%);
+  --sky-12: hsl(192 100% 88%);
+}
+
+@layer base {
+  * {
+    @apply border-mauve-6 outline-mauve-8;
+  }
+  body {
+    @apply bg-background text-foreground;
+
+    @media (prefers-color-scheme: dark) {
+      color-scheme: dark;
+    }
+  }
+}
+
+/*html,
 body {
   @apply bg-white dark:bg-gray-950;
 
   @media (prefers-color-scheme: dark) {
     color-scheme: dark;
   }
-}
+} */

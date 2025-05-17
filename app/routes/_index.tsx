@@ -1,3 +1,4 @@
+import ThemeSelector from "~/components/ThemeSelector";
 import type { Route } from "./+types/home";
 import { useLoaderData } from "react-router";
 import Footer from "~/features/home/components/Footer";
@@ -29,7 +30,8 @@ export default function Home() {
   const { copyright } = useLoaderData<typeof loader>();
 
   return (
-    <main className="h-screen font-medium w-screen text-white bg-slate-950 flex flex-col gap-2 justify-center items-center">
+    <main className="h-screen font-medium w-screen flex flex-col gap-2 justify-center items-center">
+      <ThemeSelector />
       <Header />
       <NavBar />
       <Footer copyright={copyright} />

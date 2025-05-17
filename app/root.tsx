@@ -9,6 +9,14 @@ import {
 
 import type { Route } from "./+types/root";
 import "./app.css";
+import { themeSessionResolver } from "./sessions.server";
+import type { ReactNode } from "react";
+import {
+  PreventFlashOnWrongTheme,
+  ThemeProvider,
+  useTheme,
+} from "remix-themes";
+import { useLoaderData } from "react-router";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -23,13 +31,33 @@ export const links: Route.LinksFunction = () => [
   },
 ];
 
+export async function loader({ request }: Route.LoaderArgs) {
+  const { getTheme } = await themeSessionResolver(request);
+  return {
+    theme: getTheme(),
+  };
+}
+
 export function Layout({ children }: { children: React.ReactNode }) {
+  const data = useLoaderData<typeof loader>();
   return (
-    <html lang="en">
+    <ThemeProvider specifiedTheme={data.theme} themeAction="/action/set-theme">
+      <RootLayout>{children}</RootLayout>
+    </ThemeProvider>
+  );
+}
+
+function RootLayout({ children }: { children: ReactNode }) {
+  const data = useLoaderData<typeof loader>();
+  const [theme] = useTheme();
+
+  return (
+    <html lang="en" className={theme ?? ""}>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
+        <PreventFlashOnWrongTheme ssrTheme={Boolean(data.theme)} />
         <Links />
       </head>
       <body>

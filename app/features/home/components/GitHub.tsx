@@ -2,7 +2,7 @@ import { memo } from "react";
 
 const GitHub: React.FC<{}> = () => (
   <svg
-    className="w-[21px] h-[21px] fill-slate-200"
+    className="w-[21px] h-[21px] fill-foreground"
     role="img"
     viewBox="0 0 24 24"
     xmlns="http://www.w3.org/2000/svg"
