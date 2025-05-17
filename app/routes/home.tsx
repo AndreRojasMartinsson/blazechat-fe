@@ -1,6 +1,7 @@
 import type { Route } from "./+types/home";
 import { Welcome } from "../welcome/welcome";
 import { GlobeLock, Scale } from "lucide-react";
+import { useMemo } from "react";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -22,6 +23,12 @@ const GitHub = ({ className }: { className: string }) => (
 );
 
 export default function Home() {
+  const year = useMemo(() => new Date().getFullYear(), []);
+  const copyright = useMemo(
+    () => `2025${year > 2025 ? "-" + year : ""}`,
+    [year]
+  );
+
   return (
     <main className="h-screen w-screen bg-slate-950 flex flex-col gap-2 justify-center items-center">
       <div className="flex flex-row relative items-center">
@@ -68,7 +75,9 @@ export default function Home() {
         </a>
       </nav>
       <footer className="absolute bottom-0 w-full border-t border-slate-700 p-4">
-        <p className="text-slate-200 text-center">&copy; blazechat.se 2025</p>
+        <p className="text-slate-200 text-center">
+          &copy; blazechat.se {copyright}
+        </p>
       </footer>
     </main>
   );
