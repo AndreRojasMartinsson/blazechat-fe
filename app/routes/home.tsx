@@ -1,12 +1,16 @@
 import type { Route } from "./+types/home";
-import { Welcome } from "../welcome/welcome";
 import { GlobeLock, Scale } from "lucide-react";
 import { useMemo } from "react";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "New React Router App" },
-    { name: "description", content: "Welcome to React Router!" },
+    { title: "BlazeChat - Coming Soon" },
+    {
+      name: "description",
+      content: "BlazeChat coming soon to your retail store",
+    },
+    { property: "og:title", content: "BlazeChat - Coming Soon" },
+    { property: "og:image", content: "https://blazechat.se/thumb.png" },
   ];
 }
 
