@@ -1,8 +1,7 @@
 import { useState, type ReactNode } from "react";
-import { useLoaderData } from "react-router";
 import Button from "~/components/Button";
-import { type ButtonVariants } from "~/components/Button/variants";
 import Select from "~/components/Select";
+import ThemeSelector from "~/components/ThemeSelector";
 
 const Card: React.FC<{ children: ReactNode; title: ReactNode }> = ({
   children,
@@ -14,64 +13,13 @@ const Card: React.FC<{ children: ReactNode; title: ReactNode }> = ({
   </div>
 );
 
-const BUTTONS = [
-  "primary",
-  "secondary",
-  "border",
-  "ghost",
-  "destructive",
-  "hazard",
-  "success",
-  "disabled",
-  // "icon",
-] as const;
-
-function fixCapitalization(name: string | null | undefined): string {
-  if (!name) return name!;
-
-  return `${name.charAt(0).toUpperCase()}${name.slice(1)}`;
-}
-
-function mapped(
-  variants: ButtonVariants["variant"][]
-): { label: string; variant: ButtonVariants["variant"] }[] {
-  return variants.map((variant) => ({
-    label: fixCapitalization(variant),
-    variant,
-  }));
-}
-
-export function loader() {
-  const buttons = mapped(BUTTONS as any);
-
-  return { buttons };
-}
-
-function CardTitle() {
-  return (
-    <div className="flex flex-col items-center">
-      <h3 className="text-3xl mb-3 font-bold text-left w-full">Buttons</h3>
-      <div className="flex flex-row items-center justify-start mb-2">
-        <p className="ml-[15px]">Small</p>
-        <p className="ml-[65px]">Medium</p>
-        <p className="ml-[80px]">Large</p>
-        <p className="ml-[110px]">Loading</p>
-      </div>
-    </div>
-  );
-}
-
-function CardTitle2() {
-  return <h3 className="text-3xl mb-3 font-bold text-left w-full">Button</h3>;
-}
-
 function ButtonCard() {
   const [variant, setVariant] = useState<string>("primary");
   const [size, setSize] = useState<string>("medium");
   const [loading, setLoading] = useState<string>("false");
 
   return (
-    <Card title={<CardTitle2 />}>
+    <Card title={<h3 className="text-3xl mb-3 font-bold w-full">Button</h3>}>
       <div className="flex flex-row gap-2">
         <div className="flex flex-col gap-2">
           <Select value={variant} onChange={(newValue) => setVariant(newValue)}>
@@ -108,36 +56,14 @@ function ButtonCard() {
 }
 
 export default function Components() {
-  const { buttons } = useLoaderData<typeof loader>();
-
   return (
     <div className="p-10 h-screen w-screen flex flex-col">
-      <h1 className="text-6xl font-bold mb-5">BlazeChat</h1>
-      {/* <div className="w-full flex-auto grid grid-cols-3 grid-rows-2 gap-4"> */}
-      <div className="w-full flex-auto flex flex-row flex-wrap gap-4">
-        <Card title={<CardTitle />}>
-          {buttons.map((button) => (
-            <div className="flex flex-row items-start gap-2">
-              <p className="text-mauve-11 font-medium w-[95px] text-left">
-                {button.label}
-              </p>
-              <div className="flex-auto flex items-start gap-2">
-                <Button variant={button.variant} size="small">
-                  Hello, world!
-                </Button>
-                <Button variant={button.variant}>Hello, world!</Button>
-                <Button variant={button.variant} size="large">
-                  Hello, world!
-                </Button>
-                <Button variant={button.variant} size="large" loading>
-                  Hello, world!
-                </Button>
-              </div>
-            </div>
-          ))}
-        </Card>
-        <ButtonCard />
-      </div>
+      <header className="flex w-full justify-between items-center">
+        <h1 className="text-6xl font-bold mb-5">BlazeChat</h1>
+        <ThemeSelector />
+      </header>
+
+      <ButtonCard />
     </div>
   );
 }
