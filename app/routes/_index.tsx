@@ -1,5 +1,5 @@
 import ThemeSelector from "~/components/ThemeSelector";
-import type { Route } from "./+types/home";
+import type { Route } from "./+types/_index";
 import { useLoaderData } from "react-router";
 import Footer from "~/features/home/components/Footer";
 import Header from "~/features/home/components/Header";
@@ -31,7 +31,6 @@ export default function Home() {
 
   return (
     <main className="h-screen font-medium w-screen flex flex-col gap-2 justify-center items-center">
-      <ThemeSelector />
       <Header />
       <NavBar />
       <Footer copyright={copyright} />

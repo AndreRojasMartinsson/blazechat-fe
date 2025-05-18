@@ -1,6 +1,4 @@
-import { memo } from "react";
-
-const Logo: React.FC<{}> = () => (
+const Logo: React.FC = () => (
   <>
     <p className="bg-clip-text text-transparent font-black z-10 text-8xl bg-gradient-to-b from-brand-9 to-brand-7 ">
       Blaze
@@ -16,4 +14,4 @@ const Logo: React.FC<{}> = () => (
   </>
 );
 
-export default memo(Logo);
+export default Logo;

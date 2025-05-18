@@ -1,7 +1,7 @@
 import { GlobeLock, Scale } from "lucide-react";
 import GitHub from "./GitHub";
-import { memo } from "react";
 import NavButton from "./NavButton";
+import ThemeSelector from "~/components/ThemeSelector";
 
 const NAV_BUTTONS = [
   {
@@ -29,8 +29,9 @@ const NavBar = () => {
           {button.label}
         </NavButton>
       ))}
+      <ThemeSelector />
     </nav>
   );
 };
 
-export default memo(NavBar);
+export default NavBar;

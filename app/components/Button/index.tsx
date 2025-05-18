@@ -1,15 +1,7 @@
-import { type ComponentProps, memo } from "react";
+import { type ComponentProps } from "react";
 import { variants, type ButtonVariants } from "./variants";
-import type { Prettify } from "~/utils/types";
 import { twMerge } from "tailwind-merge";
 import { Loader } from "lucide-react";
-
-namespace Button {
-  export type Props = Prettify<
-    ComponentProps<"button"> &
-      Omit<ButtonVariants, "loading"> & { loading?: boolean }
-  >;
-}
 
 const variantsWithBlackFG: ButtonVariants["variant"][] = ["hazard", "success"];
 
@@ -43,4 +35,12 @@ const Button: React.FC<Button.Props> = ({
   );
 };
 
-export default memo(Button);
+export default Button;
+
+namespace Button {
+  export interface Props
+    extends ComponentProps<"button">,
+      Omit<ButtonVariants, "loading"> {
+    loading?: boolean;
+  }
+}

@@ -1,6 +1,6 @@
-import { memo, type ReactNode } from "react";
+import { type ReactNode } from "react";
 
-const Footer: React.FC<Props> = ({ copyright }) => {
+const Footer: React.FC<Footer.Props> = ({ copyright }) => {
   return (
     <footer className="absolute bottom-0 w-full border-t border-mauve-6 p-4">
       <p className="text-center">&copy; blazechat.se {copyright}</p>
@@ -8,8 +8,10 @@ const Footer: React.FC<Props> = ({ copyright }) => {
   );
 };
 
-export default memo(Footer);
+export default Footer;
 
-interface Props {
-  copyright: ReactNode;
+namespace Footer {
+  export interface Props {
+    copyright: ReactNode;
+  }
 }

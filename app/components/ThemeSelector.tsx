@@ -1,21 +1,35 @@
-import { memo } from "react";
+import { useMemo } from "react";
 import { Theme, useTheme } from "remix-themes";
+import Select from "./Select";
+import { MoonStar, Palette, Sun } from "lucide-react";
 
 const ThemeSelector: React.FC = () => {
-  const [, setTheme] = useTheme();
+  const [theme, setTheme] = useTheme();
+
+  const themeValue = useMemo(
+    () => (theme === Theme.LIGHT ? "Light" : "Dark"),
+    [theme]
+  );
 
   return (
-    <select
-      className="z-20"
-      onChange={(e) => {
-        const value = e.target.value as "light" | "dark" | "system";
-        setTheme(value === "dark" ? Theme.DARK : Theme.LIGHT);
+    <Select
+      className="w-32"
+      value={themeValue}
+      icon={<Palette width={18} height={18} />}
+      onChange={(newValue) => {
+        setTheme(newValue === "Dark" ? Theme.DARK : Theme.LIGHT);
       }}
     >
-      <option value="light">Light</option>
-      <option value="dark">Dark</option>
-    </select>
+      <Select.Option value="Light">
+        <Sun width={21} height={21} />
+        Light
+      </Select.Option>
+      <Select.Option value="Dark">
+        <MoonStar width={21} height={21} />
+        Dark
+      </Select.Option>
+    </Select>
   );
 };
 
-export default memo(ThemeSelector);
+export default ThemeSelector;

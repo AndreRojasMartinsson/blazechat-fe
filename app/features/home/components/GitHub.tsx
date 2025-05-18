@@ -1,6 +1,4 @@
-import { memo } from "react";
-
-const GitHub: React.FC<{}> = () => (
+const GitHub: React.FC = () => (
   <svg
     className="w-[21px] h-[21px] fill-foreground"
     role="img"
@@ -12,4 +10,4 @@ const GitHub: React.FC<{}> = () => (
   </svg>
 );
 
-export default memo(GitHub);
+export default GitHub;

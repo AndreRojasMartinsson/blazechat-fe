@@ -1,8 +1,7 @@
-import { memo } from "react";
 import Badge from "./Badge";
 import Logo from "./Logo";
 
-const Header: React.FC<{}> = () => (
+const Header: React.FC = () => (
   <>
     <div className="flex flex-row relative items-center">
       <Logo />
@@ -12,4 +11,4 @@ const Header: React.FC<{}> = () => (
   </>
 );
 
-export default memo(Header);
+export default Header;

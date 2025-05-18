@@ -1,6 +1,6 @@
-import { memo, type ReactNode } from "react";
+import { type ReactNode } from "react";
 
-const NavButton: React.FC<Props> = ({ icon, children, href }) => {
+const NavButton: React.FC<NavButton.Props> = ({ icon, children, href }) => {
   return (
     <a
       target="_blank"
@@ -13,10 +13,12 @@ const NavButton: React.FC<Props> = ({ icon, children, href }) => {
   );
 };
 
-export default memo(NavButton);
+export default NavButton;
 
-interface Props {
-  icon: ReactNode;
-  children: ReactNode;
-  href: string;
+namespace NavButton {
+  export interface Props {
+    icon?: ReactNode;
+    children?: ReactNode;
+    href?: string;
+  }
 }

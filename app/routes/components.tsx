@@ -1,8 +1,7 @@
-import { Car } from "lucide-react";
 import { useState, type ReactNode } from "react";
 import { useLoaderData } from "react-router";
 import Button from "~/components/Button";
-import { variants, type ButtonVariants } from "~/components/Button/variants";
+import { type ButtonVariants } from "~/components/Button/variants";
 import Select from "~/components/Select";
 
 const Card: React.FC<{ children: ReactNode; title: ReactNode }> = ({
