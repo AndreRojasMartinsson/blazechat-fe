@@ -1,5 +1,6 @@
 import { useState, type ReactNode } from "react";
 import Button from "~/components/Button";
+import type { ButtonVariants } from "~/components/Button/variants";
 import Select from "~/components/Select";
 import ThemeSelector from "~/components/ThemeSelector";
 
@@ -43,10 +44,10 @@ function ButtonCard() {
           </Select>
         </div>
         <Button
-          variant={variant as any}
+          variant={variant as ButtonVariants["variant"]}
           className="w-max h-max"
           loading={loading === "true" ? true : false}
-          size={size as any}
+          size={size as ButtonVariants["size"]}
         >
           Hello, world!
         </Button>

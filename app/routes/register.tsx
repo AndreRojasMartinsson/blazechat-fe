@@ -1,19 +1,7 @@
 import { useLoaderData } from "react-router";
 import Footer from "~/features/home/components/Footer";
 import Header from "~/features/home/components/Header";
-import NavBar from "~/features/home/components/NavBar";
-
-export function meta() {
-  return [
-    { title: "BlazeChat - Coming Soon" },
-    {
-      name: "description",
-      content: "BlazeChat coming soon to your retail store",
-    },
-    { property: "og:title", content: "BlazeChat - Coming Soon" },
-    { property: "og:image", content: "https://blazechat.se/thumb.png" },
-  ];
-}
+import SignupForm from "~/features/register/components/SignupForm";
 
 export function loader() {
   const year = new Date().getFullYear();
@@ -24,13 +12,13 @@ export function loader() {
   };
 }
 
-export default function Home() {
+export default function Register() {
   const { copyright } = useLoaderData<typeof loader>();
 
   return (
     <main className="h-screen font-medium w-screen flex flex-col gap-2 justify-center items-center">
-      <Header />
-      <NavBar />
+      <Header comingSoon={false} />
+      <SignupForm />
       <Footer copyright={copyright} />
     </main>
   );

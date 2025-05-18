@@ -5,7 +5,7 @@ const NavButton: React.FC<NavButton.Props> = ({ icon, children, href }) => {
     <a
       target="_blank"
       href={href}
-      className="transition-all duration-200 ease-in-out text-foreground flex items-center gap-2 hover:bg-mauve-4 p-1 px-2 rounded hover:text-brand-12"
+      className="transition-all duration-200 ease-in-out text-foreground flex items-center gap-2 hover:bg-mauve-4 p-1 px-2 rounded hover:text-brand-12" rel="noreferrer"
     >
       {icon}
       {children}

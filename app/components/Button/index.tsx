@@ -3,11 +3,13 @@ import { variants, type ButtonVariants } from "./variants";
 import { twMerge } from "tailwind-merge";
 import { Loader } from "lucide-react";
 
-const variantsWithBlackFG: ButtonVariants["variant"][] = ["hazard", "success"];
+const variantsWithBlackFG: Array<ButtonVariants["variant"]> = [
+  "hazard",
+  "success",
+];
 
 const Button: React.FC<Button.Props> = ({
   size,
-  disabled,
   variant,
   className,
   loading = false,

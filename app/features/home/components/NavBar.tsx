@@ -27,7 +27,7 @@ const NavBar = () => {
     <div className="flex flex-col gap-4 mt-10">
       <nav className="p-2 border border-mauve-6 gap-2 rounded shadow dark:shadow-lg z-10 flex flex-row items-center justify-center">
         {NAV_BUTTONS.map((button) => (
-          <NavButton icon={button.icon} href={button.href}>
+          <NavButton key={button.label} icon={button.icon} href={button.href}>
             {button.label}
           </NavButton>
         ))}

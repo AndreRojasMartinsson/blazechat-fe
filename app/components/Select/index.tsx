@@ -1,4 +1,5 @@
 import {
+  Children,
   cloneElement,
   isValidElement,
   useState,
@@ -21,26 +22,24 @@ const Select: SelectComponent = ({
   const [open, setOpen] = useState(false);
 
   // For every child that's a Select.Option, clone it and inject the two extra props
-  const items =
-    typeof children === "string"
-      ? children
-      : (Array.isArray(children) ? children : [children]).map((child) => {
-          if (!isValidElement<Option.Props>(child) || child.type !== Option) {
-            return child;
+  const items = Children.toArray(children).map((child) => {
+    if (isValidElement<Option.Props>(child) && child.type === Select.Option) {
+      const childValue = child.props.value;
+
+      return cloneElement(child, {
+        isSelected: childValue === value,
+        onSelect: () => {
+          setOpen(false);
+
+          if (onChange) {
+            onChange(childValue);
           }
+        },
+      });
+    }
 
-          const childValue = child.props.value;
-          return cloneElement(child as ReactElement<Option.Props>, {
-            isSelected: childValue === value,
-            onSelect: () => {
-              setOpen(false);
-
-              if (onChange) {
-                onChange(childValue);
-              }
-            },
-          });
-        });
+    return child as ReactElement;
+  });
 
   return (
     <div
